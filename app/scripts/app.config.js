@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('registerAppApp').config(function($urlRouterProvider, $stateProvider){
 
     $urlRouterProvider.otherwise('/');
@@ -15,4 +17,4 @@ angular.module('registerAppApp').config(function($urlRouterProvider, $stateProvi
         controller: 'RegisterCtrl'
     });
 
-})
+});

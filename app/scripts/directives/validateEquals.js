@@ -15,7 +15,7 @@ angular.module('registerAppApp')
 
         scope.$watch(attrs.validateEquals, function(){
           ngModelCtrl.$setViewValue(ngModelCtrl.$viewValue);
-        })
+        });
 
       }
     };
