@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var app = express();
 
@@ -12,10 +13,25 @@ app.use(function(req,res,next){
     next();
 })
 
-app.post('/register', function(req,res){
-    console.log(req.body);
-    res.send("hi");
+var User = mongoose.model('User', {
+    email: String,
+    password: String
 })
+
+app.post('/register', function(req,res){
+    var user = req.body;
+
+    var newUser = new User({
+        email: user.email,
+        password: user.password
+    })
+
+    newUser.save(function(err){
+        res.status(200).json(newUser);
+    })
+})
+
+mongoose.connect('mongodb://localhost/registerApp', { useNewUrlParser: true });
 
 var server = app.listen(3000,function(){
     console.log('api listening on', server.address().port);
