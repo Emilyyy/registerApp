@@ -7,6 +7,8 @@ var UserSchema = new mongoose.Schema({
 })
 
 
+
+
 UserSchema.pre('save', function(next){
     var user = this;
     console.log('pre save')
@@ -29,4 +31,13 @@ UserSchema.pre('save', function(next){
     })
 })
 
+UserSchema.methods.toJSON = function(){
+    var user = this.toObject();
+    delete user.password;
+
+    return user;
+}
+
+
 exports.model = mongoose.model('User', UserSchema);
+
