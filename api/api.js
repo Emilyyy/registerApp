@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var User = require('./models/User.js');
+var jwt = require('./services/jwt.js');
 
 var app = express();
 
@@ -29,6 +30,8 @@ app.post('/register', function(req,res){
 
 mongoose.connect('mongodb://localhost/registerApp', { useNewUrlParser: true });
 
-var server = app.listen(3000,function(){
-    console.log('api listening on', server.address().port);
-})
+console.log(jwt.encode('hi','secret'));
+
+// var server = app.listen(3000,function(){
+//     console.log('api listening on', server.address().port);
+// })
