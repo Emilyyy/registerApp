@@ -23,15 +23,24 @@ app.post('/register', function(req,res){
         password: user.password
     })
 
+    var payload = {
+        iss: req.hostname,
+        sub: user._id
+    }
+
+    var token = jwt.encode(payload, "shhhh...");
+
     newUser.save(function(err){
-        res.status(200).send(newUser.toJSON());
+        res.status(200).send({
+            user: newUser.toJSON(),
+            token: token
+        });
     })
 })
 
 mongoose.connect('mongodb://localhost/registerApp', { useNewUrlParser: true });
 
-console.log(jwt.encode('hi','secret'));
 
-// var server = app.listen(3000,function(){
-//     console.log('api listening on', server.address().port);
-// })
+var server = app.listen(3000,function(){
+    console.log('api listening on', server.address().port);
+})
