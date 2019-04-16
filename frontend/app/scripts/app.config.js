@@ -20,6 +20,12 @@ angular.module('registerAppApp').config(function($urlRouterProvider, $stateProvi
     .state('logout',{
         url: '/logout',
         controller: 'LogoutCtrl'
+    })
+    
+    .state('jobs',{
+        url: '/job',
+        templateUrl: '/views/jobs.html',
+        controller: 'JobsCtrl'
     });
 
 })

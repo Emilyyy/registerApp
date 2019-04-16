@@ -9,7 +9,8 @@ angular.module('registerAppApp')
         password: $scope.password
       };
       $http.post(url,user).then(function(res){
-        alert('success', 'OK!', 'You are now registered');
+       
+        alert('success', 'Account Created!', 'Welcome, ' + user.email +'!');
         authToken.setToken(res.token);
       }, function(err){
         alert('warning','Opps!', 'Could not register');
