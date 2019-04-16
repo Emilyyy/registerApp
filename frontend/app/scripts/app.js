@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('registerAppApp', ['ui.router'])
+  .module('registerAppApp', ['ui.router','ngAnimate'])
   .config(['$locationProvider', function($locationProvider) {
     $locationProvider.hashPrefix('');
   }])
