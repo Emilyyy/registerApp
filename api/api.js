@@ -38,6 +38,17 @@ app.post('/register', function(req,res){
     })
 })
 
+
+
+app.get('/jobs', function(req,res){
+    if(!req.headers.authorization){
+        return res.status(401).send({
+            message: 'You are not authorized'
+        });
+    }
+    res.json(jobs);
+})
+
 mongoose.connect('mongodb://localhost/registerApp', { useNewUrlParser: true });
 
 

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('registerAppApp').config(function($urlRouterProvider, $stateProvider){
+angular.module('registerAppApp').config(function($urlRouterProvider, $stateProvider, $httpProvider){
 
     $urlRouterProvider.otherwise('/');
     
@@ -27,5 +27,16 @@ angular.module('registerAppApp').config(function($urlRouterProvider, $stateProvi
         templateUrl: '/views/jobs.html',
         controller: 'JobsCtrl'
     });
+    
+    // var ModuleConfig = function  ($httpProvider) {
+    //     $httpProvider.intercepters.push('authInterceptor');
+    // };
+
+    $httpProvider.interceptors.push('authInterceptor');
+
+
 
 })
+
+
+.constant('API_URL', 'http://localhost:3000/');
